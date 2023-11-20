@@ -24,6 +24,9 @@
               class="inputs-container"
               style="display: flex; flex-direction: column"
             >
+              <h1 style="text-align: center; margin: 16px 0; color: #fff">
+                Bohu Club Member
+              </h1>
               <input
                 v-model="client.firstname"
                 class="inputs"
@@ -199,7 +202,7 @@ export default {
         To: this.client.email,
         From: "gurakuqi98@gmail.com",
         Subject: "U regjistruat si klient me sukses",
-        Body: `<div style="background-color: gray; border-radius: 32px; padding: 16px;"><img src="@/assets/images/portrait_bg.jpg" /><p style="font-weight: 800;">Emri: ${this.client.firstname} ${this.client.lastname}</p><br><p style="font-weight: 800;">Numri i telefonit: ${this.client.phone}</p><br><p style="font-weight: 800;">Numri Viber/Whatsapp: ${this.client.phone2}</p><br><p style="font-weight: 800;">Email: ${this.client.email}</p><br><p style="font-weight: 800;">Adresa: ${this.client.address}</p><br><p style="font-weight: 800;">Kodi unik: ${this.client.code}</p></div>`,
+        Body: `<div style="background-color: #fbfafa; border-radius: 32px; padding: 16px;"><p style="font-weight: 800;">Emri: ${this.client.firstname} ${this.client.lastname}</p><br><p style="font-weight: 800;">Numri i telefonit: ${this.client.phone}</p><br><p style="font-weight: 800;">Numri Viber/Whatsapp: ${this.client.phone2}</p><br><p style="font-weight: 800;">Email: ${this.client.email}</p><br><p style="font-weight: 800;">Adresa: ${this.client.address}</p><br><p style="font-weight: 800;">Kodi unik: ${this.client.code}</p></div>`,
       });
     },
     async generateAndSubmit() {
