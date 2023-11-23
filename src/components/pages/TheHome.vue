@@ -11,7 +11,7 @@
     <div class="homePage__container--bg">
       <img
         class="homePage__container--bg--vector"
-        src="@/assets/images/landscape_bg.jpg"
+        src="@/assets/images/landscape_bg2.png"
         alt=""
       />
       <div class="homePage__container--bg--bgcolor"></div>
@@ -83,29 +83,7 @@
       <iframe
         width="100%"
         height="100%"
-        src="https://www.youtube.com/embed/AkUKpO8rndE"
-        title="Auto Shitesi"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
-    </div>
-    <div style="position: relative; height: 100vh; width: 100%">
-      <iframe
-        width="100%"
-        height="100%"
-        src="https://www.youtube.com/embed/7pv89Zh6S2w"
-        title="Auto Shitesi"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
-    </div>
-    <div style="position: relative; height: 100vh; width: 100%">
-      <iframe
-        width="100%"
-        height="100%"
-        src="https://www.youtube.com/embed/L-5ChGeYZdQ"
+        src="https://www.youtube.com/embed/Z2JOkqDYwH8"
         title="Auto Shitesi"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -202,7 +180,7 @@ export default {
         To: this.client.email,
         From: "gurakuqi98@gmail.com",
         Subject: "U regjistruat si klient me sukses",
-        Body: `<div style="background-color: #fbfafa; border-radius: 32px; padding: 16px;"><p style="font-weight: 800;">Emri: ${this.client.firstname} ${this.client.lastname}</p><br><p style="font-weight: 800;">Numri i telefonit: ${this.client.phone}</p><br><p style="font-weight: 800;">Numri Viber/Whatsapp: ${this.client.phone2}</p><br><p style="font-weight: 800;">Email: ${this.client.email}</p><br><p style="font-weight: 800;">Adresa: ${this.client.address}</p><br><p style="font-weight: 800;">Kodi unik: ${this.client.code}</p></div>`,
+        Body: `<img src="https://firebasestorage.googleapis.com/v0/b/autoproject-edb62.appspot.com/o/membercard_1.jpg?alt=media&token=1a19ffa2-b1a3-48f2-84a3-931238ea5b21" width="500" height="300" /><div style="display: flex;"><div><img src="https://firebasestorage.googleapis.com/v0/b/autoproject-edb62.appspot.com/o/membercard_2_half.jpg?alt=media&token=9d9cf601-4929-40ca-b1c9-76412c39d30f" width="200" height="300" /></div><div style="background-color: black; text-align: center; font-weight: 800; color: white; width: 300px; height: 270px; margin-top: 2px; padding-top: 26px; font-size: 16px;"><p style="padding-top: 4px;">${this.client.code}</p> <p style="padding-top: 4px;">${this.client.firstname}</p><p style="padding-top: 4px;">${this.client.lastname}</p><p style="padding-top: 4px;">${this.client.phone}</p><p style="padding-top: 4px;">${this.client.phone2}</p></div></div>`,
       });
     },
     async generateAndSubmit() {
@@ -254,7 +232,7 @@ export default {
 }
 
 .homePage__container--bg--bgcolor {
-  background: linear-gradient(225deg, #e22819 14%, #000 78.69%);
+  background: linear-gradient(225deg, #2519e2 14%, #000 78.69%);
   height: 1117px;
   left: 0;
   max-height: 100vh;
