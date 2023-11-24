@@ -11,7 +11,7 @@
     <div class="homePage__container--bg">
       <img
         class="homePage__container--bg--vector"
-        src="@/assets/images/landscape_bg2.png"
+        src="@/assets/images/shqip.jpg"
         alt=""
       />
       <div class="homePage__container--bg--bgcolor"></div>
@@ -67,9 +67,22 @@
                   />
                   <p style="width: 300px; padding-left: 4px">
                     pajtohem me
-                    <a href="#" @click.prevent="openModal('terms')"
-                      >rregullat dhe kushtet</a
+                    <a href="#" @click.prevent="openModal('rules')"
+                      >rregullat</a
                     >
+                  </p>
+                </div>
+              </div>
+              <div>
+                <div class="rules">
+                  <input
+                    v-model="checkedTerms"
+                    type="checkbox"
+                    style="width: 20px"
+                  />
+                  <p style="width: 300px; padding-left: 4px">
+                    pajtohem me
+                    <a href="#" @click.prevent="openModal('terms')">kushtet</a>
                   </p>
                 </div>
               </div>
@@ -154,6 +167,7 @@ export default {
       isModalOpen: false,
       type: "",
       checked: false,
+      checkedTerms: false,
       client: {
         firstname: "",
         lastname: "",
@@ -197,6 +211,11 @@ export default {
       }
 
       if (!this.checked) {
+        this.openModal("acceptRules");
+        return;
+      }
+
+      if (!this.checkedTerms) {
         this.openModal("acceptTerms");
         return;
       }
@@ -327,6 +346,7 @@ span {
 
 .rules {
   display: flex;
+  margin-top: 8px;
 }
 
 p {

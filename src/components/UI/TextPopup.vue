@@ -1,9 +1,9 @@
 <template>
   <div v-if="isModalOpen" class="modal">
-    <div class="modal-content">
+    <div class="modal-content" :style="type === 'terms' ? 'width: 500px;' : ''">
       <!-- Add the content of your modal here -->
-      <div v-if="type === 'terms'">
-        <p>Rregullat dhe kushtet</p>
+      <div v-if="type === 'rules'">
+        <p>Rregullat</p>
         <div class="content-wrapper">
           <div>
             <img
@@ -21,6 +21,22 @@
           </div>
         </div>
       </div>
+      <div v-else-if="type === 'terms'">
+        <p>Kushtet</p>
+        <div class="content-wrapper" style="margin-top: 32px">
+          Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum
+          dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem
+          ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.
+          Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum
+          dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem
+          ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.
+          Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum
+          dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem
+          ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.
+          Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum
+          dolor. Lorem ipsum dolor. Lorem ipsum dolor.
+        </div>
+      </div>
       <p v-else-if="type === 'privacy'">Privacy</p>
       <p v-else-if="type === 'code'">
         Kodi juaj unik eshte: {{ generatedCode }}
@@ -28,9 +44,8 @@
       <p v-else-if="type === 'error'">
         Ju lutemi plotesoni te gjitha fushat per te vazhduar!
       </p>
-      <p v-else-if="type === 'acceptTerms'">
-        Ju duhet te pranoni kushtet dhe rregullat!
-      </p>
+      <p v-else-if="type === 'acceptRules'">Ju duhet te pranoni rregullat!</p>
+      <p v-else-if="type === 'acceptTerms'">Ju duhet te pranoni kushtet!</p>
       <div style="display: flex; justify-content: center">
         <button class="close-button" @click="closeModal">Mbyll</button>
       </div>
