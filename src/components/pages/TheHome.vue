@@ -8,6 +8,11 @@
       align-items: center;
     "
   >
+    <div class="lang">
+      <a @click="changeLanguage('sq')">SQ</a> |
+      <a @click="changeLanguage('en')">EN</a> |
+      <a @click="changeLanguage('de')">DE</a>
+    </div>
     <div class="homePage__container--bg">
       <img
         class="homePage__container--bg--vector"
@@ -86,7 +91,9 @@
                   </p>
                 </div>
               </div>
-              <button @click.prevent="generateAndSubmit()">VAZHDO</button>
+              <button class="submit" @click.prevent="generateAndSubmit()">
+                VAZHDO
+              </button>
             </div>
           </form>
         </div>
@@ -274,7 +281,6 @@ export default {
   flex-direction: column;
   align-items: center;
   display: flex;
-  height: 100vh;
   justify-content: center;
   position: relative;
   width: 100%;
@@ -310,7 +316,7 @@ h2 {
 input:focus {
   border-bottom: 2px solid #78788c;
 }
-button {
+.submit {
   backdrop-filter: blur(20px);
   background: linear-gradient(
     152.97deg,
@@ -331,7 +337,7 @@ button {
   margin-top: 16px;
   color: white;
 }
-button:hover {
+.submit:hover {
   background: black;
 }
 span {
@@ -355,6 +361,14 @@ p {
 
 a {
   color: white;
+}
+
+.lang {
+  font-weight: 700;
+  margin-top: 1rem;
+  z-index: 9999;
+  color: white;
+  font-family: "Montserrat", sans-serif;
 }
 
 @media screen and (max-width: 768px) {
