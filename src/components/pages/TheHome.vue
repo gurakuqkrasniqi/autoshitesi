@@ -115,6 +115,8 @@
     :isModalOpen="isModalOpen"
     :type="type"
     :generatedCode="client.code"
+    :fullName="client.firstname + ' ' + client.lastname"
+    :otherInfo="client.code + ' ' + client.phone + ' ' + client.phone2"
     @closeModal="closeModal"
   />
 </template>
@@ -171,6 +173,7 @@ export default {
   },
   data() {
     return {
+      hasCode: false,
       isModalOpen: false,
       type: "",
       checked: false,
@@ -186,8 +189,34 @@ export default {
       },
     };
   },
+  watch: {
+    client: {
+      handler() {
+        this.hasCode = false;
+      },
+      deep: true,
+      immediate: true,
+    },
+  },
   methods: {
     openModal(type) {
+      if (type === "rules") {
+        if (
+          !this.client.firstname.trim() ||
+          !this.client.lastname.trim() ||
+          !this.client.address.trim() ||
+          !this.client.phone.trim() ||
+          !this.client.phone2.trim() ||
+          !this.client.email.trim()
+        ) {
+          this.type = "error";
+          this.isModalOpen = true;
+          return;
+        }
+        const randomCode = Math.floor(10000000 + Math.random() * 90000000);
+        this.client.code = randomCode.toString();
+        this.hasCode = true;
+      }
       this.type = type;
       this.isModalOpen = true;
     },
@@ -226,12 +255,23 @@ export default {
         this.openModal("acceptTerms");
         return;
       }
-
-      const randomCode = Math.floor(10000000 + Math.random() * 90000000);
-      this.client.code = randomCode.toString();
       await addDoc(clientsRef, this.client);
       this.sendEmail();
       this.openModal("code");
+      this.clearState();
+    },
+    clearState() {
+      this.hasCode = false;
+      this.type = "";
+      this.checked = false;
+      this.checkedTerms = false;
+      this.client.firstname = "";
+      this.client.lastname = "";
+      this.client.phone = "";
+      this.client.phone2 = "";
+      this.client.email = "";
+      this.client.address = "";
+      this.client.code = "";
     },
   },
 };
