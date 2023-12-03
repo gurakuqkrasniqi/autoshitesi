@@ -15,8 +15,21 @@
     </div>
     <div class="homePage__container--bg">
       <img
+        v-if="language === 'sq'"
         class="homePage__container--bg--vector"
         src="@/assets/images/shqip.jpg"
+        alt=""
+      />
+      <img
+        v-else-if="language === 'en'"
+        class="homePage__container--bg--vector"
+        src="@/assets/images/anglisht.jpg"
+        alt=""
+      />
+      <img
+        v-else-if="language === 'de'"
+        class="homePage__container--bg--vector"
+        src="@/assets/images/gjermanisht.jpg"
         alt=""
       />
       <div class="homePage__container--bg--bgcolor"></div>
@@ -30,38 +43,80 @@
               style="display: flex; flex-direction: column"
             >
               <h1 style="text-align: center; margin: 16px 0; color: #fff">
-                Bohu Club Member
+                {{
+                  language === "sq"
+                    ? "Bohu Club Member"
+                    : language === "en"
+                    ? "Be a Club Member"
+                    : "Seien Sie Clubmitglied"
+                }}
               </h1>
               <input
                 v-model="client.firstname"
                 class="inputs"
-                placeholder="Emri"
+                :placeholder="
+                  language === 'sq'
+                    ? 'Emri'
+                    : language === 'en'
+                    ? 'Name'
+                    : 'Name'
+                "
               />
               <input
                 v-model="client.lastname"
                 class="inputs"
-                placeholder="Mbiemri"
+                :placeholder="
+                  language === 'sq'
+                    ? 'Mbiemri'
+                    : language === 'en'
+                    ? 'Surname'
+                    : 'Nachname'
+                "
               />
               <input
                 v-model="client.phone"
                 class="inputs"
-                placeholder="Numri i telefonit"
+                :placeholder="
+                  language === 'sq'
+                    ? 'Numri i telefonit'
+                    : language === 'en'
+                    ? 'Phone number'
+                    : 'Telefonnummer'
+                "
               />
               <input
                 v-model="client.phone2"
                 class="inputs"
-                placeholder="Numri Viber/Whatsapp"
+                :placeholder="
+                  language === 'sq'
+                    ? 'Viber/Whatsapp'
+                    : language === 'en'
+                    ? 'Viber/Whatsapp'
+                    : 'Viber/Whatsapp'
+                "
               />
               <input
                 v-model="client.address"
                 class="inputs"
-                placeholder="Adresa"
+                :placeholder="
+                  language === 'sq'
+                    ? 'Adresa'
+                    : language === 'en'
+                    ? 'Address'
+                    : 'Address'
+                "
               />
               <input
                 v-model="client.email"
                 class="inputs"
                 type="email"
-                placeholder="Email"
+                :placeholder="
+                  language === 'sq'
+                    ? 'Email'
+                    : language === 'en'
+                    ? 'Email'
+                    : 'Email'
+                "
               />
               <div>
                 <div class="rules">
@@ -71,10 +126,20 @@
                     style="width: 20px"
                   />
                   <p style="width: 300px; padding-left: 4px">
-                    pajtohem me
-                    <a href="#" @click.prevent="openModal('rules')"
-                      >rregullat</a
-                    >
+                    {{
+                      language === "sq"
+                        ? "Unë pranoj"
+                        : language === "en"
+                        ? "I accept"
+                        : "Ich akzeptiere"
+                    }}
+                    <a href="#" @click.prevent="openModal('rules')">{{
+                      language === "sq"
+                        ? "rregullat"
+                        : language === "en"
+                        ? "rules"
+                        : "regeln"
+                    }}</a>
                   </p>
                 </div>
               </div>
@@ -86,13 +151,31 @@
                     style="width: 20px"
                   />
                   <p style="width: 300px; padding-left: 4px">
-                    pajtohem me
-                    <a href="#" @click.prevent="openModal('terms')">kushtet</a>
+                    {{
+                      language === "sq"
+                        ? "Unë pranoj"
+                        : language === "en"
+                        ? "I accept"
+                        : "Ich akzeptiere"
+                    }}
+                    <a href="#" @click.prevent="openModal('terms')">{{
+                      language === "sq"
+                        ? "kushtet"
+                        : language === "en"
+                        ? "terms"
+                        : "bedingungen"
+                    }}</a>
                   </p>
                 </div>
               </div>
               <button class="submit" @click.prevent="generateAndSubmit()">
-                VAZHDO
+                {{
+                  language === "sq"
+                    ? "VAZHDO"
+                    : language === "en"
+                    ? "SUBMIT"
+                    : "EINREICHEN"
+                }}
               </button>
             </div>
           </form>
@@ -117,6 +200,7 @@
     :generatedCode="client.code"
     :fullName="client.firstname + ' ' + client.lastname"
     :otherInfo="client.code + ' ' + client.phone + ' ' + client.phone2"
+    :language="language"
     @closeModal="closeModal"
   />
 </template>
@@ -176,6 +260,7 @@ export default {
       hasCode: false,
       isModalOpen: false,
       type: "",
+      language: "sq",
       checked: false,
       checkedTerms: false,
       client: {
@@ -259,6 +344,9 @@ export default {
       this.sendEmail();
       this.openModal("code");
       this.clearState();
+    },
+    changeLanguage(lang) {
+      this.language = lang;
     },
     clearState() {
       this.hasCode = false;

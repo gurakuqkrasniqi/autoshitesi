@@ -65,21 +65,65 @@
       </div>
       <p v-else-if="type === 'privacy'">Privacy</p>
       <p v-else-if="type === 'code'">
-        Kodi juaj unik eshte: {{ generatedCode }}
+        {{
+          language === "sq"
+            ? "Kodi juaj unik"
+            : language === "en"
+            ? "Unique code"
+            : "Ihr einzigartiger Code"
+        }}: {{ generatedCode }}
       </p>
       <p v-else-if="type === 'error'">
-        Ju lutemi plotesoni te gjitha fushat per te vazhduar!
+        {{
+          language === "sq"
+            ? "Ju lutemi plotesoni te gjitha fushat per te vazhduar!"
+            : language === "en"
+            ? "Please fill in all fields to continue!"
+            : "Bitte füllen Sie alle Felder aus, um fortzufahren!"
+        }}
       </p>
-      <p v-else-if="type === 'acceptRules'">Ju duhet te pranoni rregullat!</p>
-      <p v-else-if="type === 'acceptTerms'">Ju duhet te pranoni kushtet!</p>
+      <p v-else-if="type === 'acceptRules'">
+        {{
+          language === "sq"
+            ? "Ju duhet te pranoni rregullat!"
+            : language === "en"
+            ? "You must accept the rules!"
+            : "Sie müssen die Regeln akzeptieren!"
+        }}
+      </p>
+      <p v-else-if="type === 'acceptTerms'">
+        {{
+          language === "sq"
+            ? "Ju duhet te pranoni kushtet!"
+            : language === "en"
+            ? "You must accept the terms!"
+            : "Sie müssen die Bedingungen akzeptieren!"
+        }}
+      </p>
       <div
         v-if="type === 'rules'"
         style="display: flex; justify-content: center"
       >
-        <button class="close-button" @click="printPdf">Printo</button>
+        <button class="close-button" @click="printPdf">
+          {{
+            language === "sq"
+              ? "Shkarko"
+              : language === "en"
+              ? "Download"
+              : "Herunterladen"
+          }}
+        </button>
       </div>
       <div style="display: flex; justify-content: center">
-        <button class="close-button" @click="closeModal">Mbyll</button>
+        <button class="close-button" @click="closeModal">
+          {{
+            language === "sq"
+              ? "Mbyll"
+              : language === "en"
+              ? "Close"
+              : "Schließen"
+          }}
+        </button>
       </div>
     </div>
   </div>
@@ -107,6 +151,10 @@ export default {
       required: true,
     },
     otherInfo: {
+      type: String,
+      required: true,
+    },
+    language: {
       type: String,
       required: true,
     },
